@@ -41,7 +41,7 @@
 
 <style scoped>
 .app-container {
-  padding: 40px 0;
+  padding: 40px 0 50px 0;
   overflow-x: hidden;
   /* 去除横向滚动条 */
 }
