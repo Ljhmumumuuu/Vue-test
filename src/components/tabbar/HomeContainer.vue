@@ -1,13 +1,7 @@
 <template>
   <div>
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
-      <!-- 组件中使用for  一定要制定key -->
-      <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
-        <!--src 若当做表达式来计算，必须进行绑定 -->
-        <img :src="item.imgurl">
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
 
     <!-- 9宫格到6宫格的改造 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -18,16 +12,16 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/photolist">
           <img src="../../images/icons/menu2.png">
           <div class="mui-media-body">图片分享</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/goodslist">
           <img src="../../images/icons/menu3.png">
           <div class="mui-media-body">商品购买</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -56,6 +50,7 @@
 <script>
 //按需导入
 import { Toast } from "mint-ui";
+import swiper from "../subcomponents/swiper.vue";
 
 //本地图片获取
 export default {
@@ -71,6 +66,9 @@ export default {
   },
   created() {
     // console.log(this.lunbotuList);
+  },
+  components: {
+    swiper
   }
 };
 
@@ -100,41 +98,24 @@ export default {
         }
       });
     }
+  },
+  components:{
+    swiper
   }
+ 
 }; */
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe {
-  height: 320px;
-}
-
-.mint-swipe-item {
-  //scss的写法[交集选择器]
-  &:nth-child(1) {
-    background-color: antiquewhite;
-  }
-  &:nth-child(2) {
-    background-color: brown;
-  }
-  &:nth-child(3) {
-    background-color: chocolate;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .mui-grid-view.mui-grid-9 {
   background: #fff;
   border: none;
-  img{
+  img {
     width: 60px;
-    height: 60px
+    height: 60px;
   }
-  .mui-media-body{
-    font-size: 13px
+  .mui-media-body {
+    font-size: 13px;
   }
 }
 

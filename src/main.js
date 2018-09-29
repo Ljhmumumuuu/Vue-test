@@ -15,24 +15,40 @@ Vue.filter('dateFormat', function (datastr, pattern = "YYYY-MM-DD HH:mm:ss") {
 })
 
 
+
 //2.1导入vue-resource
 import VueResource from 'vue-resource'
 //2.2安装vue-resource
 Vue.use(VueResource)
+
+//vue-resource插件
 Vue.http.options.root = 'http://vue.studyit.io ';
+//全局设置post时候表单数据格式组织形式
+Vue.http.options.emulateJSON = true;
 
 
 // 按需导入mint-ui
-import { Header, Swipe, SwipeItem, Button } from 'mint-ui';
+/* import { Header, Swipe, SwipeItem, Button, Lazyload } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
+Vue.use(Lazyload); */
+
+import Mint from 'mint-ui';
+Vue.use(Mint);
+import 'mint-ui/lib/style.css'
+
+import VuePreview from 'vue-preview'
+
+// defalut install
+Vue.use(VuePreview)
+
+
 
 // 导入mui的样式
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
-
 
 //1.3导入组件的router.js路由模块
 import router from './router.js'
