@@ -84,7 +84,7 @@ export default {
         sell_price: 199
       },
       ballFlag: false, //控制小球的隐藏和显示
-      selectedCount:1//保存用户选中的商品数量，默认，认为用户买一个
+      selectedCount: 1 //保存用户选中的商品数量，默认，认为用户买一个
     };
   },
   creater() {
@@ -111,6 +111,16 @@ export default {
     },
     addToShopCar() {
       this.ballFlag = !this.ballFlag;
+      // {id：商品id，count：要购买的数量，price:商品的单价，selcted：false}
+      //拼接处一个，要保存到store中car数组里的 商品信息
+      var goodsinfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsinfo.sell_price,
+        selected: true //默认选中
+      };
+      //调用$store中的mutations,来将商品加入购物车
+      this.$store.commit("addToCar", goodsinfo);
     },
     goDesc(id) {
       //点击使用编程式导航跳转到 图文介绍页面
@@ -152,13 +162,11 @@ export default {
     afterEnter(el) {
       this.ballFlag = !this.ballFlag;
     },
-    getSelectedCount(count){
+    getSelectedCount(count) {
       //当子组件把选中的数量传递给父组件的时候，把选中的值保存到data上
-      this.selectedCount=count;
-      console.log("父组件拿到的数量值为："+this.selectedCount);
+      this.selectedCount = count;
+      console.log("父组件拿到的数量值为：" + this.selectedCount);
     }
-
-
   },
   components: {
     swiper,

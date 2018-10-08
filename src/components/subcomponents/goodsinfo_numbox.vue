@@ -1,6 +1,7 @@
 <template>
     <!-- 问题：我们不知道什么时候能够拿到max，但是，总归有一刻，会得到真正的max值 -->
     <!-- 我们可以使用watch属性监听，来监听父组件传递过来的max值，不管watch会被触发几次 ，但最后一次-->
+    <!-- data-numbox-max='max' 这特么异不异步 都没软用..只有定死了 才有反应... -->
     <div class="mui-numbox" data-numbox-min='1' data-numbox-max='max'>
         <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
         <input id="test" class="mui-input-numbox" type="number" value="1" @change="countChanged" ref="numbox"/>
